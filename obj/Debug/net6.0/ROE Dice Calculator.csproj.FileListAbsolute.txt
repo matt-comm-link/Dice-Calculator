@@ -1,0 +1,15 @@
+C:\Projects\Other Coding\dice calc\ROE Dice Calculator\bin\Debug\net6.0\ROE Dice Calculator.exe
+C:\Projects\Other Coding\dice calc\ROE Dice Calculator\bin\Debug\net6.0\ROE Dice Calculator.deps.json
+C:\Projects\Other Coding\dice calc\ROE Dice Calculator\bin\Debug\net6.0\ROE Dice Calculator.runtimeconfig.json
+C:\Projects\Other Coding\dice calc\ROE Dice Calculator\bin\Debug\net6.0\ROE Dice Calculator.dll
+C:\Projects\Other Coding\dice calc\ROE Dice Calculator\bin\Debug\net6.0\ROE Dice Calculator.pdb
+C:\Projects\Other Coding\dice calc\ROE Dice Calculator\obj\Debug\net6.0\ROE Dice Calculator.csproj.AssemblyReference.cache
+C:\Projects\Other Coding\dice calc\ROE Dice Calculator\obj\Debug\net6.0\ROE Dice Calculator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\Other Coding\dice calc\ROE Dice Calculator\obj\Debug\net6.0\ROE Dice Calculator.AssemblyInfoInputs.cache
+C:\Projects\Other Coding\dice calc\ROE Dice Calculator\obj\Debug\net6.0\ROE Dice Calculator.AssemblyInfo.cs
+C:\Projects\Other Coding\dice calc\ROE Dice Calculator\obj\Debug\net6.0\ROE Dice Calculator.csproj.CoreCompileInputs.cache
+C:\Projects\Other Coding\dice calc\ROE Dice Calculator\obj\Debug\net6.0\ROE Dice Calculator.dll
+C:\Projects\Other Coding\dice calc\ROE Dice Calculator\obj\Debug\net6.0\refint\ROE Dice Calculator.dll
+C:\Projects\Other Coding\dice calc\ROE Dice Calculator\obj\Debug\net6.0\ROE Dice Calculator.pdb
+C:\Projects\Other Coding\dice calc\ROE Dice Calculator\obj\Debug\net6.0\ROE Dice Calculator.genruntimeconfig.cache
+C:\Projects\Other Coding\dice calc\ROE Dice Calculator\obj\Debug\net6.0\ref\ROE Dice Calculator.dll
