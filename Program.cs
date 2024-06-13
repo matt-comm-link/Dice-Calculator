@@ -33,6 +33,7 @@ public class Program
             string response = Console.ReadLine();
             if (response != "y" && response != "Y")
                 open = false;
+            Console.Clear();
         }
 
         return;
@@ -214,14 +215,20 @@ class Results
     public void Evaluate() 
     {
         int[] diceOccuranceCounts = new int[highestUniqueDiceRolled + 1];
-        for (int i = 0; i < DiceDifferent.Count; i++)
+        if (Dice > 0)
         {
-            diceOccuranceCounts[DiceDifferent[i] - 1]++;
+            for (int i = 0; i < DiceDifferent.Count; i++)
+            {
+                diceOccuranceCounts[DiceDifferent[i] - 1]++;
+            }
         }
         int[] discordDiceOccuranceCounts = new int[highestUniqueDiscordDiceRolled];
-        for (int i = 0; i < DiscordDiceDifferent.Count; i++)
+        if (DiscordDice > 0)
         {
-            discordDiceOccuranceCounts[DiscordDiceDifferent[i] - 1]++;
+            for (int i = 0; i < DiscordDiceDifferent.Count; i++)
+            {
+                discordDiceOccuranceCounts[DiscordDiceDifferent[i] - 1]++;
+            }
         }
         int[] prunedDiceOccuranceCounts = new int[highestUniquePrunedDiceRolled];
         for (int i = 0; i < PrunedDiceDifferent.Count; i++)
@@ -238,38 +245,43 @@ class Results
 
         Console.Clear();
         Console.WriteLine(name + "stats, For a sample size of " + SampleSize);
-        Console.WriteLine("");
-        Console.WriteLine("");
-        Console.WriteLine("Regular Dice:");
-        for (int i = 0; i < highestUniqueDiceRolled; i++)
+        if (Dice > 0)
         {
-            float proportionPercent = ((float)diceOccuranceCounts[i] / (float)DiceDifferent.Count) * 100;
-            int BarLines = Math.Max((int)(proportionPercent / 5), 1);
-            for (int b = 0; b < BarLines; b++)
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("Regular Dice:");
+            for (int i = 0; i < highestUniqueDiceRolled; i++)
             {
-                Console.Write("|");
+                float proportionPercent = ((float)diceOccuranceCounts[i] / (float)DiceDifferent.Count) * 100;
+                int BarLines = Math.Max((int)(proportionPercent / 5), 1);
+                for (int b = 0; b < BarLines; b++)
+                {
+                    Console.Write("|");
+                }
+                Console.Write((i + 1) + " = " + proportionPercent + "% ");
+                Console.Write('\n');
             }
-            Console.Write((i + 1) + " = " + proportionPercent + "% ");
-            Console.Write('\n');
         }
 
-        Console.WriteLine("");
-        Console.WriteLine("");
-        Console.WriteLine("Discord Dice:");
-        for (int i = 0; i < highestUniqueDiscordDiceRolled; i++)
+        if (DiscordDice > 0)
         {
-            float proportionPercent = ((float)discordDiceOccuranceCounts[i] / (float)DiscordDiceDifferent.Count) * 100;
-            int BarLines = Math.Max((int)(proportionPercent / 5), 1);
-            for (int b = 0; b < BarLines; b++)
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("Discord Dice:");
+            for (int i = 0; i < highestUniqueDiscordDiceRolled; i++)
             {
-                Console.Write("|");
+                float proportionPercent = ((float)discordDiceOccuranceCounts[i] / (float)DiscordDiceDifferent.Count) * 100;
+                int BarLines = Math.Max((int)(proportionPercent / 5), 1);
+                for (int b = 0; b < BarLines; b++)
+                {
+                    Console.Write("|");
+                }
+                Console.Write((i + 1) + " = " + proportionPercent + "% ");
+                Console.Write('\n');
             }
-            Console.Write((i + 1) + " = " + proportionPercent + "% ");
-            Console.Write('\n');
+            Console.WriteLine("");
+            Console.WriteLine("Average dice pruned as a result of a discord collision: " + discordCancelAverage + " per roll");
         }
-        Console.WriteLine("");
-        Console.WriteLine("Average dice pruned as a result of a discord collision: " + discordCancelAverage + " per roll");
-
 
         Console.WriteLine("");
         Console.WriteLine("");
