@@ -317,9 +317,19 @@ class Results
         Console.WriteLine("");
         Console.WriteLine("");
         Console.WriteLine("Final (pruned) roll results:");
+
+        bool HitThirtyPercent = false;
+        int seventyChanceToHit = 0;
+        bool HitFiftyPercent = false;
+        int fiftyChanceToHit = 0;
+        bool HitSeventyPercent = false;
+        int thirtyChanceToHit = 0;
+
+        float currentpercentpoint = 0;
         for (int i = 0; i < highestUniquePrunedDiceRolled; i++)
         {
             float proportionPercent = ((float)prunedDiceOccuranceCounts[i] / (float)PrunedDiceDifferent.Count) * 100;
+
             int BarLines = Math.Max((int)(proportionPercent / 5), 1);
             for (int b = 0; b < BarLines; b++)
             {
@@ -327,6 +337,29 @@ class Results
             }
             Console.Write((i + 1) + " = " + proportionPercent + "% ");
             Console.Write('\n');
+
+            currentpercentpoint += proportionPercent;
+            if (!HitThirtyPercent && currentpercentpoint >= 30)
+            {
+                HitThirtyPercent = true;
+                seventyChanceToHit = i + 1;
+            }
+            if (!HitFiftyPercent && currentpercentpoint >= 50) 
+            {
+                HitFiftyPercent = true;
+                fiftyChanceToHit = i + 1;
+            }
+            if (!HitSeventyPercent && currentpercentpoint >= 70)
+            {
+                HitSeventyPercent = true;
+                thirtyChanceToHit = i + 1;
+            }
         }
+
+        Console.WriteLine("");
+        Console.WriteLine("Can hit at least " + seventyChanceToHit + " 70% of the time");
+        Console.WriteLine("Can hit at least " + fiftyChanceToHit + " 50% of the time");
+        Console.WriteLine("Can hit at least " + thirtyChanceToHit + " 30% of the time");
+
     }
 }
