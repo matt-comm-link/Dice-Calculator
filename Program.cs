@@ -11,18 +11,35 @@ public class Program
         bool open = true;
         while (open)
         {
+            string response;
             Console.WriteLine("Handy Degrees Of Progress dice simulator for statistics!");
             Console.WriteLine("--------------------------------------------------------");
             Console.WriteLine("by mattihase");
             Console.WriteLine("");
             Console.WriteLine("");
-            Console.WriteLine("Which sided dice would you like to test?");
-            int usethisbase = int.Parse(Console.ReadLine());
-            Console.WriteLine("How many Regular Dice to roll?");
-            int usethisDice = int.Parse(Console.ReadLine());
-            Console.WriteLine("How many Discord Dice to roll?");
-            int usethisDiscord = int.Parse(Console.ReadLine());
+            int usethisbase;
+            int usethisDice;
+            int usethisDiscord;
+            try
+            {
+                Console.WriteLine("Which sided dice would you like to test?");
+                usethisbase = int.Parse(Console.ReadLine());
+                Console.WriteLine("How many Regular Dice to roll?");
+                usethisDice = int.Parse(Console.ReadLine());
+                Console.WriteLine("How many Discord Dice to roll?");
+                usethisDiscord = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Please use valid numbers");
+                Console.WriteLine("Test again? (y/n)");
+                response = Console.ReadLine();
+                if (response != "y" && response != "Y")
+                    open = false;
+                Console.Clear();
 
+                continue;
+            }
             Results test = new Results(usethisDice, usethisDiscord, usethisbase);
             Console.WriteLine("How many samples do you want the statistics to be generated from?");
             int samples = int.Parse(Console.ReadLine());
@@ -30,7 +47,7 @@ public class Program
             test.RunTest(samples);
 
             Console.WriteLine("Test again? (y/n)");
-            string response = Console.ReadLine();
+            response = Console.ReadLine();
             if (response != "y" && response != "Y")
                 open = false;
             Console.Clear();
@@ -204,7 +221,21 @@ class Results
 
     public void RunTest(int sampleize) 
     {
-        
+        if (sampleize <= 0)
+        {
+            Console.WriteLine("I wouldn't exactly call that a sample size");
+            return;
+        }
+        if (Dice + DiscordDice <= 0)
+        {
+            Console.WriteLine("No dice, baby!");
+            return;
+        }
+        if (DiceBase <= 0)
+        {
+            Console.WriteLine("Zero sided dice are outside of the purview of this program");
+            return;
+        }
         for (int i = 0; i < sampleize; i++)
         {
             Roll();
