@@ -41,8 +41,23 @@ public class Program
                 continue;
             }
             Results test = new Results(usethisDice, usethisDiscord, usethisbase);
+            int samples;
             Console.WriteLine("How many samples do you want the statistics to be generated from?");
-            int samples = int.Parse(Console.ReadLine());
+            try
+            {
+                samples = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Please use valid numbers");
+                Console.WriteLine("Test again? (y/n)");
+                response = Console.ReadLine();
+                if (response != "y" && response != "Y")
+                    open = false;
+                Console.Clear();
+
+                continue;
+            }
             Console.WriteLine("Generating Results");
             test.RunTest(samples);
 
@@ -250,21 +265,21 @@ class Results
         {
             for (int i = 0; i < DiceDifferent.Count; i++)
             {
-                diceOccuranceCounts[DiceDifferent[i] - 1]++;
+                diceOccuranceCounts[DiceDifferent[i]]++;
             }
         }
-        int[] discordDiceOccuranceCounts = new int[highestUniqueDiscordDiceRolled];
+        int[] discordDiceOccuranceCounts = new int[highestUniqueDiscordDiceRolled + 1];
         if (DiscordDice > 0)
         {
             for (int i = 0; i < DiscordDiceDifferent.Count; i++)
             {
-                discordDiceOccuranceCounts[DiscordDiceDifferent[i] - 1]++;
+                discordDiceOccuranceCounts[DiscordDiceDifferent[i]]++;
             }
         }
-        int[] prunedDiceOccuranceCounts = new int[highestUniquePrunedDiceRolled];
+        int[] prunedDiceOccuranceCounts = new int[highestUniquePrunedDiceRolled + 1];
         for (int i = 0; i < PrunedDiceDifferent.Count; i++)
         {
-            prunedDiceOccuranceCounts[PrunedDiceDifferent[i] - 1]++;
+            prunedDiceOccuranceCounts[PrunedDiceDifferent[i]]++;
         }
 
         float discordcancelamount = 0;
